@@ -8,6 +8,8 @@ export class HomePage extends BasePage {
   readonly guestsButton: Locator;
   readonly addAdultsButton: Locator;
   readonly addChildrenButton: Locator;
+  readonly adultsAmount: Locator;
+  readonly childrenAmount: Locator;
 
   constructor(page: Page) {
     super(page);
@@ -17,6 +19,8 @@ export class HomePage extends BasePage {
     this.guestsButton = this.page.getByTestId('structured-search-input-field-guests-button');
     this.addAdultsButton = this.page.getByTestId('stepper-adults-increase-button');
     this.addChildrenButton = this.page.getByTestId('stepper-children-increase-button');
+    this.adultsAmount = this.page.getByTestId('stepper-adults-value');
+    this.childrenAmount = this.page.getByTestId('stepper-children-value');
   }
 
   async goTo() {
@@ -57,5 +61,13 @@ export class HomePage extends BasePage {
     for (let index = 0; index < amount; index++) {
       await this.addChildrenButton.click();
     }
+  }
+
+  async getAdultsAmount(): Promise<number> {
+    return parseInt(await this.adultsAmount.textContent() || '');
+  }
+
+  async getChildrenAmount(): Promise<number> {
+    return parseInt(await this.childrenAmount.textContent() || '');
   }
 }
