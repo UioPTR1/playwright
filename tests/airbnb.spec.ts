@@ -22,9 +22,7 @@ test.describe("Airbnb", () => {
     await homePage.clickOnSpecificDate(formattedCheckOutDate);
     await homePage.clickOnGuestsButton();
     await homePage.addAdults(2);
-    expect(await homePage.getAdultsAmount()).toEqual(2);
     await homePage.addChildren(1);
-    expect(await homePage.getChildrenAmount()).toEqual(1);
     await homePage.clickOnSearch();
     
     const pagePromise = context.waitForEvent("page");

@@ -62,12 +62,4 @@ export class HomePage extends BasePage {
       await this.addChildrenButton.click();
     }
   }
-
-  async getAdultsAmount(): Promise<number> {
-    return parseInt(await this.adultsAmount.textContent() || '');
-  }
-
-  async getChildrenAmount(): Promise<number> {
-    return parseInt(await this.childrenAmount.textContent() || '');
-  }
 }
